@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "48cb8014c0e1d1512829ac4f7e5af6c55e41b7ff410bbec9127b3589d7a198c5"
+            "sha256": "cd7d6fcd8bc37af824c5598a39a1aef2153f17ec760194c9a3c41856bc1c93cb"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -102,6 +102,13 @@
             ],
             "version": "==1.0"
         },
+        "marshmallow": {
+            "hashes": [
+                "sha256:0f3776aa5b5405f6000c9304841abe6d4d708bb08207fc89a5ecd86622ec9e54",
+                "sha256:57a107cfd58e9ed52dd355c65444e983d064fdcf63214a487d7305a2d24680db"
+            ],
+            "version": "==2.15.4"
+        },
         "more-itertools": {
             "hashes": [
                 "sha256:c187a73da93e7a8acc0001572aebc7e3c69daf7bf6881a2cea10650bd4420092",
@@ -191,6 +198,13 @@
                 "sha256:6da0987b9874cf53e72139624665a73965bbd7fbde504d1753e4231ce916f3a1"
             ],
             "version": "==1.0.2"
+        },
+        "pyramid-restful-framework": {
+            "hashes": [
+                "sha256:c6e21cf85e12ce47b2094530c8671e9bcbd4830d4f8811edc52cde34bb3812cd"
+            ],
+            "index": "pypi",
+            "version": "==1.0.0"
         },
         "pyramid-retry": {
             "hashes": [
