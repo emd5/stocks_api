@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 stocks-api = {editable = true, path = ".", extras = ["testing"]}
+pydocstyle = "*"
 
 [dev-packages]
 
