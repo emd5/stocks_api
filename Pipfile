@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 stocks-api = {editable = true, path = ".", extras = ["testing"]}
 pydocstyle = "*"
+pyramid-restful-framework = "*"
 
 [dev-packages]
 

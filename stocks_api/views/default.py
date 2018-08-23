@@ -1,4 +1,4 @@
-from pyramid.response import Response
+from pyramid.response import Response  # generates a response from the pyramid library
 from pyramid.view import view_config
 
 
@@ -8,19 +8,11 @@ def home_view(request):
     This function is responsible for receiving a request, building a response.
 
      :returns
-        A response
+        A json response 'Hello World'
     """
-    message = 'Hello World'
-    return Response(body=message, status=200)
+    message = '''
+    Hello World
+    '''
+    return Response(body=message, content_type='text/plain', status=200)
 
 
-@view_config(route_name='stocks', renderer='json', request_method='GET')
-def stocks_view(request):
-    """
-    This function is responsible for receiving a stocks request, building a stocks response.
-
-     :returns
-        A response
-    """
-    message = 'Stocks!'
-    return Response(body=message, status=200)
