@@ -1,5 +1,6 @@
 from pyramid_restful.routers import ViewSetRouter
-from .views import CompanyAPIViewset, StockAPIViewset
+from .views.company import CompanyAPIViewset
+from .views.stocks import StockAPIViewset
 
 
 def includeme(config):
