@@ -1,0 +1,3 @@
+[run]
+source = stocks_api
+omit = stocks_api/test*
