@@ -19,7 +19,7 @@ requires = [
     'transaction',
     'zope.sqlalchemy',
     'waitress',
-    'pyramid_restful'
+    'pyramid-restful-framework',
 ]
 
 tests_require = [
