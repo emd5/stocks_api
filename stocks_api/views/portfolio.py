@@ -8,16 +8,16 @@ import json
 import requests
 
 
-#  vanilla pyramid syntax, hacky way
-@view_config(route_name='lookup', renderer='json', request_method='GET')
-def lookup(request):
-    """Grabs zip code
-    :param request:
-    :return:
-    """
-    url = 'https://api.iextrading.com/1.0'.format(request.matchdict['id'])
-    response = requests.get(url)
-    return response(json='response.json', status=200)
+# #  vanilla pyramid syntax, hacky way
+# @view_config(route_name='lookup', renderer='json', request_method='GET')
+# def lookup(request):
+#     """Grabs zip code
+#     :param request:
+#     :return:
+#     """
+#     url = 'https://api.iextrading.com/1.0'.format(request.matchdict['id'])
+#     response = requests.get(url)
+#     return response(json='response.json', status=200)
 
 
 class StockAPIViewset(APIViewSet):
