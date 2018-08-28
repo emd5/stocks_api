@@ -70,7 +70,7 @@ course…)
 - [x] The requests library and a free API from IEX TRADING, which does not require the use of an API key at this point.
 - [x] We are specifically interested in the Company Info and the Time Series info, both of which are
 accessible via an API call using a companies Stock Symbol.
-- [x] Using your model class methods, formulate an appropriate serialized response for each available endpoint /
+- [] Using your model class methods, formulate an appropriate serialized response for each available endpoint /
 method that we configured in our last lab for this application. You may want to refer back to the LAB.md
 specification for each of those endpoints to review the functionality required.
 
