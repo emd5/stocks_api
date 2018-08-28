@@ -16,7 +16,7 @@ from ..models import (
     get_tm_session,
     )
 
-from ..models import MyModel
+# from ..models import MyModel
 from ..models import Stock
 from ..models import Portfolio
 from ..models import Company

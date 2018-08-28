@@ -31,11 +31,11 @@ class Portfolio(Base):
             raise DBAPIError
 
         # stock = StocksLocation({'name': 'some name', 'zip_code': 98038})
-        stock = cls(**kwargs)
-        request.dbsession.add(stock)
+        portfolio = cls(**kwargs)
+        request.dbsession.add(portfolio)
 
         return request.dbsession.query(cls).filter(
-            cls.zip_code == kwargs['zip_code']).one_or_none()  # returns a query object one or none
+            cls.id == kwargs['id']).one_or_none()  # returns a query object one or none
 
     # @classmethod
     # def all(cls, request):
