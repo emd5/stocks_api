@@ -1,5 +1,5 @@
 from .company import CompanyAPIViewset
-from .location import StockAPIViewset
+from .stock import StockAPIViewset
 # from .auth import AuthAPIViewset
 
 

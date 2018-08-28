@@ -8,16 +8,16 @@ import json
 import requests
 
 
-#  vanilla pyramid syntax, hacky way
-@view_config(route_name='lookup', renderer='json', request_method='GET')
-def lookup(request):
-    """Grabs zip code
-    :param request:
-    :return:
-    """
-    url = 'https://api.iextrading.com/1.0'.format(request.matchdict['id'])
-    response = requests.get(url)
-    return response(json='response.json', status=200)
+# #  vanilla pyramid syntax, hacky way
+# @view_config(route_name='lookup', renderer='json', request_method='GET')
+# def lookup(request):
+#     """Grabs zip code
+#     :param request:
+#     :return:
+#     """
+#     url = 'https://api.iextrading.com/1.0'.format(request.matchdict['id'])
+#     response = requests.get(url)
+#     return response(json='response.json', status=200)
 
 
 class StockAPIViewset(APIViewSet):
@@ -61,42 +61,42 @@ class StockAPIViewset(APIViewSet):
         return Response(status=204)
 
 
-class PortfolioAPIViewset(APIViewSet):
-    def list(self, request):
-        """Get all portfolios """
-        return Response(json={'message': 'Provided a list of portfolios'}, status=200)
-
-    def create(self, request):
-        """Create a new portfolio """
-        return Response(json={'message': 'Create a new portfolio'}, status=201)
-
-    def retrieve(self, request, id=None):
-        """Get one portfolio """
-        return Response(json={'message': 'Get one portfolio'}, status=200)
-
-    def destroy(self, request, id=None):
-        """Delete a portfolio """
-        return Response(json={'message': 'Delete a stock'}, status=204)
-
-
-class CompanyAPIViewset(APIViewSet):
-    def list(self, request):
-        """Get a list of all records """
-        # http: 6534/api/v1/company/  # <- just an example
-        return Response(json={'message': 'Provided a list of companies'}, status=200)
-
-    def create(self, request):
-        """Create a records """
-        return Response(json={'message': 'Create a new company'}, status=201)
-
-    def retrieve(self, request, id=None):
-        """Get one record """
-        # http://6543/api/v1/company/{symbol}/
-
-        # Use the 'id' to lookup that resource in the DB,
-        # Formulate a response and send it back to the client
-        return Response(json={'message': 'Provided a single company'}, status=200)
-
-    def destroy(self, request, id=None):
-        """Delete a record """
-        return Response(json={'message': 'Delete a company'}, status=204)
+# class PortfolioAPIViewset(APIViewSet):
+#     def list(self, request):
+#         """Get all portfolios """
+#         return Response(json={'message': 'Provided a list of portfolios'}, status=200)
+#
+#     def create(self, request):
+#         """Create a new portfolio """
+#         return Response(json={'message': 'Create a new portfolio'}, status=201)
+#
+#     def retrieve(self, request, id=None):
+#         """Get one portfolio """
+#         return Response(json={'message': 'Get one portfolio'}, status=200)
+#
+#     def destroy(self, request, id=None):
+#         """Delete a portfolio """
+#         return Response(json={'message': 'Delete a stock'}, status=204)
+#
+#
+# class CompanyAPIViewset(APIViewSet):
+#     def list(self, request):
+#         """Get a list of all records """
+#         # http: 6534/api/v1/company/  # <- just an example
+#         return Response(json={'message': 'Provided a list of companies'}, status=200)
+#
+#     def create(self, request):
+#         """Create a records """
+#         return Response(json={'message': 'Create a new company'}, status=201)
+#
+#     def retrieve(self, request, id=None):
+#         """Get one record """
+#         # http://6543/api/v1/company/{symbol}/
+#
+#         # Use the 'id' to lookup that resource in the DB,
+#         # Formulate a response and send it back to the client
+#         return Response(json={'message': 'Provided a single company'}, status=200)
+#
+#     def destroy(self, request, id=None):
+#         """Delete a record """
+#         return Response(json={'message': 'Delete a company'}, status=204)
