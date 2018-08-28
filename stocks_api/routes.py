@@ -13,5 +13,7 @@ def includeme(config):
     router = ViewSetRouter(config)
     router.register('api/v1/company', CompanyAPIViewset, 'company')
     router.register('api/v1/stocks', StockAPIViewset, 'stocks')
+    router.register('api/v1/portfolio', StockAPIViewset, 'portfolio')
+
 
 
