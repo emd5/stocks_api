@@ -12,11 +12,11 @@ import requests
 @view_config(route_name='lookup', renderer='json', request_method='GET')
 def lookup(request):
     """
-    Grabs zip code
+    Grabs id
     :param request:
     :return:
     """
-    url = 'https://api.openstocksmap.org/....'.format(request.matchdict['zip_code'])
+    url = 'https://api.iextrading.com/1.0'.format(request.matchdict['id'])
     response = requests.get(url)
     return response(json='response.json', status=200)
 
@@ -29,7 +29,7 @@ class StockAPIViewset(APIViewSet):
         except json.JSONDecodeError as e:
             return Response(json=e.msg, status=400)
 
-        if 'zip_code' not in kwargs:
+        if 'id' not in kwargs:
             return Response(json='Expected value: stocks', status=400)
 
         try:
