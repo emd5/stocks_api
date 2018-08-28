@@ -19,7 +19,11 @@ requires = [
     'transaction',
     'zope.sqlalchemy',
     'waitress',
-    'pyramid-restful-framework',
+    'pyramid-restful-framework',  # Custom
+    'requests',  # Custom
+    'marshmallow_sqlalchemy',  # Custom
+    'psycopg2-binary',  # Custom
+
 ]
 
 tests_require = [

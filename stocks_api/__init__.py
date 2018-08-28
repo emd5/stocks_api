@@ -6,7 +6,7 @@ def main(global_config, **settings):
     """
     config = Configurator(settings=settings)
     config.include('pyramid_restful')
-    # config.include('.models') # don't pay attention to this folder
+    config.include('.models') # don't pay attention to this folder
     config.include('.routes') # points to routes.py looks at includeme()
 
     config.scan()  # looks at @view_config decorator, tells app to look at them, gather them and use them as controllers
