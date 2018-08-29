@@ -30,12 +30,11 @@ class Company(Base):
         if request.dbsession is None:
             raise DBAPIError
 
-        # stock = StocksLocation({'name': 'some name', 'zip_code': 98038})
         stock = cls(**kwargs)
         request.dbsession.add(stock)
 
         return request.dbsession.query(cls).filter(
-            cls.zip_code == kwargs['zip_code']).one_or_none()  # returns a query object one or none
+            cls.name == kwargs['name']).one_or_none()  # returns a query object one or none
 
     @classmethod
     def all(cls, request):

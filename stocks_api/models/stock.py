@@ -6,6 +6,7 @@ from sqlalchemy import(
     Integer,
     Text,
     DateTime,
+    ForeignKey,
 )
 
 
@@ -13,17 +14,18 @@ from .meta import Base
 
 
 class Stock(Base):
-    __tablename__ = 'stock'
+    __tablename__ = 'stocks'
     id = Column(Integer, primary_key=True)
     symbol = Column(Text)
-    company_name = Column(Text, unique=True, nullable=False)
-    exchange = Column(Text, unique=True, nullable=False)
-    industry = Column(Text, unique=True, nullable=False)
-    website = Column(Integer, unique=True, nullable=False)
-    description = Column(Text, unique=True, nullable=False)
-    ceo = Column(Text, unique=True, nullable=False)
-    issue_type = Column(Text, unique=True, nullable=False)
-    sector = Column(Text, unique=True, nullable=False)
+    company_name = Column(Text)
+    exchange = Column(Text)
+    industry = Column(Text)
+    website = Column(Integer)
+    description = Column(Text)
+    ceo = Column(Text)
+    issue_type = Column(Text)
+    sector = Column(Text)
+
     date_created = Column(DateTime, default=dt.now())
     date_updated = Column(DateTime, default=dt.now(), onupdate=dt.now())
 
@@ -43,10 +45,10 @@ class Stock(Base):
         request.dbsession.add(stock)
 
         return request.dbsession.query(cls).filter(
-            cls.id == kwargs['id']).one_or_none()  # returns a query object one or none
+            cls.symbol == kwargs['symbol']).one_or_none()  # returns a query object one or none
 
     @classmethod
-    def destroy(cls, request=None, pk=None):
+    def remove(cls, request=None, pk=None):
         if request.dbsession is None:
             raise DBAPIError
 
