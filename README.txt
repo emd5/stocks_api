@@ -75,6 +75,18 @@ method that we configured in our last lab for this application. You may want to 
 specification for each of those endpoints to review the functionality required.
 
 
+2018-08-28
+
+=====
+
+- [x] Using the diagram below as a guide update your models/ directory with the new account.py, role.py, and associations.py files, and create each of the tables
+- [x] Ensure that your model relationships are functional
+- [x] Ensure that you’ve taken advantage of the SQLAlchemy relationship method to create additional functionality within your code base for accessing those new relationships
+- [x] Add your new models to the Initialization Script, drop and recreate your DB, and initialize again with your new tables
+
+
+
+
 Getting Started
 ---------------
 
