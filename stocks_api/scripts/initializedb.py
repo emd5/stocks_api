@@ -20,6 +20,8 @@ from ..models import (
 from ..models import Stock
 from ..models import Portfolio
 from ..models import Company
+from ..models import Account
+from ..models import AccountRole
 
 
 def usage(argv):
@@ -43,12 +45,16 @@ def main(argv=sys.argv):
     Base.metadata.create_all(engine)
 
     #  Below is used for seeding the DB
-    # session_factory = get_session_factory(engine)
-    #
-    # with transaction.manager:
-    #     dbsession = get_tm_session(session_factory, transaction.manager)
-    #
-    #     # Creates an in-memory instance
-    #     model = MyModel(name='one', value=1)
-    #     #  The transaction to the DB
-    #     dbsession.add(model)
+    session_factory = get_session_factory(engine)
+
+    with transaction.manager:
+        dbsession = get_tm_session(session_factory, transaction.manager)
+
+        # Creates an in-memory instance
+        roles = ['admin', 'view']
+        for role in roles:
+            model = AccountRole(name=role)
+            #  The transaction to the DB
+            dbsession.add(model)
+
+

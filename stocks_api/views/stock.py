@@ -7,21 +7,25 @@ from ..models.stock import Stock
 import json
 import requests
 
+API_URL = 'https://api.iextrading.com/1.0/'
 
-#  vanilla pyramid syntax, hacky way
+
 @view_config(route_name='lookup', renderer='json', request_method='GET')
 def lookup(request):
-    """
-    Grabs id
+    """ Grabs id
     :param request:
     :return:
     """
-    url = 'https://api.iextrading.com/1.0'.format(request.matchdict['id'])
+    symbol = request.matchdict['symbol']
+    url = f'{API_URL}stock/{symbol}/company'
     response = requests.get(url)
-    return response(json='response.json', status=200)
+
+    return Response(json=response.json(), status=200)
 
 
 class StockAPIViewset(APIViewSet):
+    """ Must validate here!! The gatekeeper"""
+
     def create(self, request):
         """ Create one new stock"""
         try:
@@ -42,12 +46,24 @@ class StockAPIViewset(APIViewSet):
         return Response(json=data, status=201)
 
     def list(self, request):
-        """Get all records """
-        return Response(json={'message': 'Provided a list of stocks'}, status=200)
+        """Get all stocks """
+        # Serialized everything in the list
+        records = Stock.all(request)
+        schema = StockSchema()
+        data = [schema.dump(record).data for record in records]
+
+        return Response(json=data, status=200)
 
     def retrieve(self, request, id=None):
-        """ Get a stock """
-        return Response(json={'message': 'Get a stock'}, status=200)
+        """ Get one stock """
+        record = Stock.one(request, id)
+        if not record:
+            return Response(json='Record not Found', status=404)
+
+        schema = StockSchema()
+        data = schema.dump(record).data
+
+        return Response(json=data, status=200)
 
     def destroy(self, request, id=None):
         """ Delete a stock"""
