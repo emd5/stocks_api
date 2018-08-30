@@ -7,6 +7,12 @@ name = "pypi"
 stocks-api = {editable = true, path = ".", extras = ["testing"]}
 pydocstyle = "*"
 pyramid-restful-framework = "*"
+pyramid = "*"
+requests = "*"
+marshmallow-sqlalchemy = "*"
+"psycopg2-binary" = "*"
+cryptacular = "*"
+pyramid-jwt = "*"
 
 [dev-packages]
 

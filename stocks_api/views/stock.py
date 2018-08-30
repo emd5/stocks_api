@@ -4,6 +4,8 @@ from pyramid.response import Response
 from pyramid.view import view_config
 from ..models.schemas import StockSchema
 from ..models.stock import Stock
+from ..models.account import Account
+
 import json
 import requests
 
@@ -33,8 +35,13 @@ class StockAPIViewset(APIViewSet):
         except json.JSONDecodeError as e:
             return Response(json=e.msg, status=400)
 
-        if 'id' not in kwargs:
-            return Response(json='Expected value: stocks', status=400)
+        if 'symbol' not in kwargs:
+            return Response(json='Expected value: symbol', status=400)
+
+        #  Authentication required for managing model relationships
+        if request.authenticated_userid:
+            account = Account.one(request, request.authenticated_userid)
+            kwargs['account.id'] = account.id
 
         try:
             stock = Stock.new(request, **kwargs)
