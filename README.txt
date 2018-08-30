@@ -89,7 +89,18 @@ specification for each of those endpoints to review the functionality required.
 
 =====
 
-
+- [x] Install and configure the use of the pyramid_jwt library in the application, and configure the Pyramid policies and permissions for views and routes
+- [x] Configured the RootACL class in the project’s __init__.py file before associated permissions on the routes/views will take effect
+- [x] In models/account.py:
+    - [x] Refactor the Account model with a __init__ method, which allows users password to be hashed by bcrypt before being stored in the database
+    - [x] Create a check_credentials class method on the Account model which allows a verification of username and password, and returns None on validation failure or the Account instance on validation success
+    - [x] In the views/ directory, create a new file called auth.py
+    - [x] Add a new view controller class called AuthAPIView for defining registration and login functionality
+    - [x] View controller enables a post for registration and a get for login
+    - [x] Each of the methods construct and return a new JSON Web Token in the response
+    - [x] If the registration or login fails, handle those exceptions correctly with an appropriate status code and JSON response
+          -For example, if a user registers with an email that’s already registered in the system, it will send a 409 Conflict status
+          code with an appropriate message in the response body
 
 
 Getting Started
