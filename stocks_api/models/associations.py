@@ -3,6 +3,7 @@ from .meta import metadata
 
 
 #  This file representation is the db association (junction) for the accounts and roles db
+# This file represents a many to many relationship between accounts and account roles
 roles_association = Table(
     'roles_association',
     metadata,

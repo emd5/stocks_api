@@ -29,7 +29,8 @@ class AccountSchema(ModelSchema):
 class StockSchema(ModelSchema):
     roles = fields.Nested(AccountRoleSchema, many=True, only='name')
     account = fields.Nested(AccountSchema,
-    exclude=('password', 'locations', 'roles', 'date_created', 'date_updated'))
+    exclude=('password', 'locations', 'roles', 'date_created', 'date_updated'
+             ))
     class Meta:
         model = Stock
 
