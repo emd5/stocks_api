@@ -19,7 +19,7 @@ def lookup(request):
     :return:
     """
     symbol = request.matchdict['symbol']
-    url = f'{API_URL}stock/{symbol}/company'
+    url = f'{API_URL}stocks/{symbol}/company'
     response = requests.get(url)
 
     return Response(json=response.json(), status=200)

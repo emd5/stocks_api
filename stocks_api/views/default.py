@@ -2,9 +2,10 @@ from pyramid.response import Response  # generates a response from the pyramid l
 from pyramid.view import view_config
 
 
-@view_config(route_name='home',renderer='json',request_method='GET')
+@view_config(route_name='home', renderer='json', request_method='GET')
 def home_view(request):
     """
+    Displays the home page with the following message.
     This function is responsible for receiving a request, building a response.
 
      :returns
