@@ -4,6 +4,7 @@ from pyramid.response import Response
 from ..models import Account
 import json
 
+
 class AuthAPIViewset(APIViewSet):
     def create(self, request, auth=None):
         """Create a auth instance"""
@@ -37,6 +38,7 @@ class AuthAPIViewset(APIViewSet):
                             authenticated.email,
                             roles=[role.name for role in authenticated.roles],
                             userName=authenticated.email,
+                            expiration=1500,
                         )
                     }
                 )
