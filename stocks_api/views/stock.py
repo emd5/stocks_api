@@ -26,7 +26,7 @@ def lookup(request):
 
 
 class StockAPIViewset(APIViewSet):
-    """ Must validate here!! The gatekeeper"""
+    """A class that handles the response and listens from an endpoint. """
 
     def create(self, request):
         """ Create one new stock"""
@@ -54,6 +54,12 @@ class StockAPIViewset(APIViewSet):
 
     def list(self, request):
         """Get all stocks """
+
+        if request.authenticated_userid:
+            account = Account.one(request, request.authenticated_userid)
+        else:
+            return Response(json="Forbidden", status=403)
+
         # Serialized everything in the list
         records = Stock.all(request)
         schema = StockSchema()

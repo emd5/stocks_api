@@ -18,6 +18,8 @@ manager = bcrypt.BCRYPTPasswordManager()
 
 
 class Account(Base):
+
+    # A way for sqlalchemy to generate the accounts table
     __tablename__ = 'accounts'
     id = Column(Integer, primary_key=True)
     email = Column(Text, nullable=False, unique=True)
@@ -30,6 +32,7 @@ class Account(Base):
     date_update = Column(DateTime, default=dt.now(), onupdate=dt.now())
 
     def __init__(self, email, password=None):
+        """Attributes of the account class"""
         self.email = email
         self.password = manager.encode(password, 10)  # NOTE: 10 indicates a level of complexity
 
@@ -56,13 +59,14 @@ class Account(Base):
             cls.email == email).one_or_none()
 
     @classmethod
-    def one(cls,request, email=None):
+    def one(cls, request, email=None):
+        """Email validation against"""
         return request.dbsession.query(cls).filter(
             cls.email == email).one_or_none()
 
     @classmethod
     def check_credentials(cls, request, email, password):
-        """Validate that user exist and they are who they say they are"""
+        """Validate user exists and they are who they say they are"""
 
         if request.dbsession is None:
             raise DBAPIError
