@@ -16,28 +16,43 @@ Using python scripting language, pyramid restful framework
 ## Changelog
 
 
-2018-08-22
+2018-09-05
 
 =====
 
-- [x] Create your Pyramid scaffold using the cookiecutter template for a SQLAlchemy scaffold
-- [x] Navigate into the new project directory and create a new git repository: git init
-- [x] Create a new repository on GitHub called stocks_api, and connect your repos using git remote add origin <url-to-your-repo.git> from within the project directory
-- [x] Create a well named branch for today’s work in your stocks_api repository
-- [x] Configure the root of your repository with the following files and directories. Thoughtfully name and organize any additional configuration or module files.
-- [x] README.md - Containing good documentation for how to setup, install, and run your application
-- [x] .editorconfig - Contains a standard Editor Configuration for your application (use our class standard)
-- [x] .gitignore - Contains a robust Git Ignore file for all relevant Python related materials
-- [x] tests/ - Contains unit tests for your application
-- [x] Install the requests package using pipenv, which will enable as easy to use API for making HTTP requests to your 3rd party API
+-[x] Create a new endpoint in the application, filterable via query-string, including a class-based view,
+and other configurations which when a request is made will generate a 5 year time series Candlestick
+visual and save it to the file system of the project under static/.
+    For example: GET /api/v1/visuals/MSFT?type=candle: returns <200 OK>,
+    Creates a new file in the file system for that chart. This should save in html format.
 
 
-- [x] Disable the unnecessary functionality of your scaffold, by commenting out the include() statements in your __init__.py:main() function
-; we will not be using Jinja2 templating (Delete that line) or Models for the time being
-- [x] Delete the templates/ directory
-- [x] Remove the contents of default.py and notfound.py
-- [x] Ensure that your application can accept requests to the following routes, and returns the appropriate response:
-- [x] GET / - the base API route -> Status code: 200 OK
+2018-08-29
+
+=====
+
+- [x] Install and configure the use of the pyramid_jwt library in the application, and configure the Pyramid policies and permissions for views and routes
+- [x] Configured the RootACL class in the project’s __init__.py file before associated permissions on the routes/views will take effect
+- [x] In models/account.py:
+    - [x] Refactor the Account model with a __init__ method, which allows users password to be hashed by bcrypt before being stored in the database
+    - [x] Create a check_credentials class method on the Account model which allows a verification of username and password, and returns None on validation failure or the Account instance on validation success
+    - [x] In the views/ directory, create a new file called auth.py
+    - [x] Add a new view controller class called AuthAPIView for defining registration and login functionality
+    - [x] View controller enables a post for registration and a get for login
+    - [x] Each of the methods construct and return a new JSON Web Token in the response
+    - [x] If the registration or login fails, handle those exceptions correctly with an appropriate status code and JSON response
+          -For example, if a user registers with an email that’s already registered in the system, it will send a 409 Conflict status
+          code with an appropriate message in the response body
+
+
+2018-08-28
+
+=====
+
+- [x] Using the diagram below as a guide update your models/ directory with the new account.py, role.py, and associations.py files, and create each of the tables
+- [x] Ensure that your model relationships are functional
+- [x] Ensure that you’ve taken advantage of the SQLAlchemy relationship method to create additional functionality within your code base for accessing those new relationships
+- [x] Add your new models to the Initialization Script, drop and recreate your DB, and initialize again with your new tables
 
 
 2018-08-27
@@ -75,32 +90,33 @@ method that we configured in our last lab for this application. You may want to 
 specification for each of those endpoints to review the functionality required.
 
 
-2018-08-28
+2018-08-22
 
 =====
 
-- [x] Using the diagram below as a guide update your models/ directory with the new account.py, role.py, and associations.py files, and create each of the tables
-- [x] Ensure that your model relationships are functional
-- [x] Ensure that you’ve taken advantage of the SQLAlchemy relationship method to create additional functionality within your code base for accessing those new relationships
-- [x] Add your new models to the Initialization Script, drop and recreate your DB, and initialize again with your new tables
+- [x] Create your Pyramid scaffold using the cookiecutter template for a SQLAlchemy scaffold
+- [x] Navigate into the new project directory and create a new git repository: git init
+- [x] Create a new repository on GitHub called stocks_api, and connect your repos using git remote add origin <url-to-your-repo.git> from within the project directory
+- [x] Create a well named branch for today’s work in your stocks_api repository
+- [x] Configure the root of your repository with the following files and directories. Thoughtfully name and organize any additional configuration or module files.
+- [x] README.md - Containing good documentation for how to setup, install, and run your application
+- [x] .editorconfig - Contains a standard Editor Configuration for your application (use our class standard)
+- [x] .gitignore - Contains a robust Git Ignore file for all relevant Python related materials
+- [x] tests/ - Contains unit tests for your application
+- [x] Install the requests package using pipenv, which will enable as easy to use API for making HTTP requests to your 3rd party API
 
 
-2018-08-29
+- [x] Disable the unnecessary functionality of your scaffold, by commenting out the include() statements in your __init__.py:main() function
+; we will not be using Jinja2 templating (Delete that line) or Models for the time being
+- [x] Delete the templates/ directory
+- [x] Remove the contents of default.py and notfound.py
+- [x] Ensure that your application can accept requests to the following routes, and returns the appropriate response:
+- [x] GET / - the base API route -> Status code: 200 OK
 
-=====
 
-- [x] Install and configure the use of the pyramid_jwt library in the application, and configure the Pyramid policies and permissions for views and routes
-- [x] Configured the RootACL class in the project’s __init__.py file before associated permissions on the routes/views will take effect
-- [x] In models/account.py:
-    - [x] Refactor the Account model with a __init__ method, which allows users password to be hashed by bcrypt before being stored in the database
-    - [x] Create a check_credentials class method on the Account model which allows a verification of username and password, and returns None on validation failure or the Account instance on validation success
-    - [x] In the views/ directory, create a new file called auth.py
-    - [x] Add a new view controller class called AuthAPIView for defining registration and login functionality
-    - [x] View controller enables a post for registration and a get for login
-    - [x] Each of the methods construct and return a new JSON Web Token in the response
-    - [x] If the registration or login fails, handle those exceptions correctly with an appropriate status code and JSON response
-          -For example, if a user registers with an email that’s already registered in the system, it will send a 409 Conflict status
-          code with an appropriate message in the response body
+
+
+
 
 
 Getting Started
