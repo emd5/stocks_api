@@ -8,7 +8,7 @@ import json
 class AuthAPIViewset(APIViewSet):
     def create(self, request, auth=None):
         """Create a auth instance"""
-        data = json.loads(request.body)
+        data = json.loads(request.body.decode())
 
         if auth == 'register':
             try:

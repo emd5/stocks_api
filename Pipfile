@@ -17,6 +17,7 @@ bokeh = "*"
 sklearn = "*"
 numpy = "*"
 pandas = "*"
+pytest = "*"
 
 [dev-packages]
 
